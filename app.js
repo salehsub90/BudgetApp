@@ -15,9 +15,9 @@ var budgetController = (function () {
     var calculateTotal = function(type) {
         var sum = 0;
         data.allItems[type].forEach(function (cur) {
-            sum += cur.value;
+            sum += parseInt(cur.value);
         });
-        data.totals[type] = sum;
+        data.totals[type] = parseInt(sum);
     };
 
     //data structure
@@ -65,15 +65,19 @@ var budgetController = (function () {
             data.budget = data.totals.inc - data.totals.exp;
 
             //percentage of income
-            data.percentage = Math.round((data.totals.exp / data.totals.inc) * 100);
+            if (data.totals.inc > 0) {
+                data.percentage = Math.round((data.totals.exp / data.totals.inc) * 100);
+            } else {
+                data.percentage = -1;
+            }
         },
         getBudget: function() {
             return {
                 budget: data.budget,
                 totalInc: data.totals.inc,
-                totalEx: data.totals.exp,
+                totalExp: data.totals.exp,
                 percentage: data.percentage
-            }
+            };
         }
     };
 
@@ -87,8 +91,10 @@ var UIController = (function () {
         inputValue: '.add__value',
         inputBtn: '.add__btn',
         incomeContainer: '.income__list',
-        expensesContainer: '.expenses__list'
-    }
+        expensesContainer: '.expenses__list',
+        budgetValue: '.budget__value'
+    };
+
     return {
         getInput: function () {
             return {
@@ -134,6 +140,11 @@ var UIController = (function () {
             });
             fieldsArray[0].focus();
         },
+        displayNumbers: function () {
+            return {
+                budget: document.querySelector(DOMStrings.budgetValue).innerHTML,
+            }
+        },
         getDOMStrings: function () {
             return DOMStrings;
         }
@@ -163,6 +174,7 @@ var controller = (function (budgetCtrl, UICtrl) {
         
         // display on UI
         console.log(budget);
+        UICtrl.displayNumbers.budget = budget.budget;
     }
 
     var ctrlAddItem = function () {
