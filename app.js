@@ -79,7 +79,15 @@ var budgetController = (function () {
         
         deleteItem: function (type, id) {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
             var ids, indexID;
+=======
+            var ids, idIndex;
+>>>>>>> Stashed changes
+=======
+            var ids, idIndex;
+>>>>>>> Stashed changes
 =======
             var ids, idIndex;
 >>>>>>> Stashed changes
@@ -88,15 +96,27 @@ var budgetController = (function () {
                 return current.id;
             });
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
             indexID = ids.indexOf(id);
 
             if (indexID !== -1) {
                 data.allItems[type].splice(indexID, 1);
 =======
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
             idIndex = ids.indexOf(id);
 
             if (idIndex !== -1) {
                 data.allItems[type].splice(idIndex, 1);
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             }
         },
@@ -119,6 +139,8 @@ var budgetController = (function () {
         },
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
         calculatePercentages: function() {
             data.allItems.exp.forEach( function(cur) {
                 cur.calcPercentage(data.totals.inc);
@@ -130,6 +152,16 @@ var budgetController = (function () {
                 return current.getPercentage();
             });
             return allPerc;
+=======
+        calculatePercentges: function () {
+           var totIncome = data.totals.inc;
+           Expense.calcPercentage(totIncome);
+>>>>>>> Stashed changes
+=======
+        calculatePercentges: function () {
+           var totIncome = data.totals.inc;
+           Expense.calcPercentage(totIncome);
+>>>>>>> Stashed changes
 =======
         calculatePercentges: function () {
            var totIncome = data.totals.inc;
@@ -167,9 +199,15 @@ var UIController = (function () {
         expensesLabel: '.budget__expenses--value',
         percentageLabel: '.budget__expenses--percentage',
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
         container: '.container',
         itemPercentage: '.item__percentage'
 =======
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
         itemPercentage: '.item__percentage',
         container: '.container'
 >>>>>>> Stashed changes
@@ -212,7 +250,15 @@ var UIController = (function () {
         },
         
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
         deleteListItem: function (selectorID) {
+=======
+        deleteListItem: function(selectorID) {
+>>>>>>> Stashed changes
+=======
+        deleteListItem: function(selectorID) {
+>>>>>>> Stashed changes
 =======
         deleteListItem: function(selectorID) {
 >>>>>>> Stashed changes
@@ -248,9 +294,15 @@ var UIController = (function () {
             }
         },
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
         displayPercentages: function(percentages) {
             var item = document.querySelectorAll(DOMStrings.itemPercentage);
         },
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -296,6 +348,8 @@ var controller = (function (budgetCtrl, UICtrl) {
 
         // update the ui with the new percentage
     };
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
     var updatePercentages = function() {
         // calculate percentage
@@ -308,6 +362,10 @@ var controller = (function (budgetCtrl, UICtrl) {
         console.log(perc);
         UICtrl.displayPercentages(perc);
     };
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 
     var ctrlAddItem = function () {
         var input, newItem;
@@ -326,10 +384,18 @@ var controller = (function (budgetCtrl, UICtrl) {
 
         // calculate the budget
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
         updateBudget();
 
         // calculate and update percentage
         updatePercentages();
+=======
+        updateBudget();        
+>>>>>>> Stashed changes
+=======
+        updateBudget();        
+>>>>>>> Stashed changes
 =======
         updateBudget();        
 >>>>>>> Stashed changes
@@ -352,9 +418,15 @@ var controller = (function (budgetCtrl, UICtrl) {
             // update and show the new budget
             updateBudget();
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
             // calculate and update percentage
             updatePercentages();
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
         }        
