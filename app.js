@@ -7,6 +7,14 @@ var budgetController = (function () {
         this.value = value;
         this.percentage = -1;
     };
+
+    Expense.prototype.calcPercentage = function (totalIncome) {
+        if (totalIncome > 0){
+            this.percentage = Math.round((this.value / totalIncome) * 100);
+        }
+    }
+
+
     var Income = function (id, description, value) {
         this.id = id;
         this.description = description;
@@ -70,15 +78,26 @@ var budgetController = (function () {
         },
         
         deleteItem: function (type, id) {
+<<<<<<< Updated upstream
             var ids, indexID;
+=======
+            var ids, idIndex;
+>>>>>>> Stashed changes
 
             ids = data.allItems[type].map(function (current) {
                 return current.id;
             });
+<<<<<<< Updated upstream
             indexID = ids.indexOf(id);
 
             if (indexID !== -1) {
                 data.allItems[type].splice(indexID, 1);
+=======
+            idIndex = ids.indexOf(id);
+
+            if (idIndex !== -1) {
+                data.allItems[type].splice(idIndex, 1);
+>>>>>>> Stashed changes
             }
         },
 
@@ -99,6 +118,7 @@ var budgetController = (function () {
             }
         },
 
+<<<<<<< Updated upstream
         calculatePercentages: function() {
             data.allItems.exp.forEach( function(cur) {
                 cur.calcPercentage(data.totals.inc);
@@ -110,6 +130,11 @@ var budgetController = (function () {
                 return current.getPercentage();
             });
             return allPerc;
+=======
+        calculatePercentges: function () {
+           var totIncome = data.totals.inc;
+           Expense.calcPercentage(totIncome);
+>>>>>>> Stashed changes
         },
 
         getBudget: function() {
@@ -119,6 +144,10 @@ var budgetController = (function () {
                 totalExp: data.totals.exp,
                 percentage: data.percentage
             };
+        },
+        testing: function() {
+            console.log(data);
+            calculatePercentge();
         }
     };
 
@@ -137,8 +166,13 @@ var UIController = (function () {
         incomeLabel: '.budget__income--value',
         expensesLabel: '.budget__expenses--value',
         percentageLabel: '.budget__expenses--percentage',
+<<<<<<< Updated upstream
         container: '.container',
         itemPercentage: '.item__percentage'
+=======
+        itemPercentage: '.item__percentage',
+        container: '.container'
+>>>>>>> Stashed changes
     };
 
     return {
@@ -149,6 +183,7 @@ var UIController = (function () {
                 value: document.querySelector(DOMStrings.inputValue).value
             };
         },
+
         addListItem: function (obj, type) {
             var html, newHtml, element;
             //create html string with placeholder text
@@ -176,7 +211,11 @@ var UIController = (function () {
             document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
         },
         
+<<<<<<< Updated upstream
         deleteListItem: function (selectorID) {
+=======
+        deleteListItem: function(selectorID) {
+>>>>>>> Stashed changes
             var el = document.getElementById(selectorID);
             el.parentNode.removeChild(el);
         },
@@ -192,8 +231,8 @@ var UIController = (function () {
             });
             fieldsArray[0].focus();
         },
-        displayNumbers: function (obj) {
 
+        displayNumbers: function (obj) {
             document.querySelector(DOMStrings.budgetLabel).textContent = obj.budget;
             if (obj.totalExp != 0 || obj.totalInc != 0) {
                 document.querySelector(DOMStrings.expensesLabel).textContent = '- ' + obj.totalExp;
@@ -208,9 +247,12 @@ var UIController = (function () {
                 document.querySelector(DOMStrings.percentageLabel).textContent = '---';
             }
         },
+<<<<<<< Updated upstream
         displayPercentages: function(percentages) {
             var item = document.querySelectorAll(DOMStrings.itemPercentage);
         },
+=======
+>>>>>>> Stashed changes
 
         getDOMStrings: function () {
             return DOMStrings;
@@ -234,7 +276,7 @@ var controller = (function (budgetCtrl, UICtrl) {
         document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
     };
 
-    var updateBudget = function() {
+    var updateBudget = function () {
         // calculate budget
         budgetCtrl.calculateBudget();
 
@@ -244,7 +286,16 @@ var controller = (function (budgetCtrl, UICtrl) {
         // display on UI
         console.log(budget);
         UICtrl.displayNumbers(budget);
-    }
+    };
+
+    var updatePercentages = function () {
+
+        // calculate percentage
+
+        // read percentage from the budget controller
+
+        // update the ui with the new percentage
+    };
 
     var updatePercentages = function() {
         // calculate percentage
@@ -274,10 +325,14 @@ var controller = (function (budgetCtrl, UICtrl) {
         UICtrl.clearFields();
 
         // calculate the budget
+<<<<<<< Updated upstream
         updateBudget();
 
         // calculate and update percentage
         updatePercentages();
+=======
+        updateBudget();        
+>>>>>>> Stashed changes
     };
 
     var ctrlDeleteItem = function (event) {
@@ -296,9 +351,12 @@ var controller = (function (budgetCtrl, UICtrl) {
 
             // update and show the new budget
             updateBudget();
+<<<<<<< Updated upstream
 
             // calculate and update percentage
             updatePercentages();
+=======
+>>>>>>> Stashed changes
         }        
     }
 
