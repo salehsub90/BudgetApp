@@ -298,6 +298,11 @@ var UIController = (function () {
 <<<<<<< Updated upstream
         displayPercentages: function(percentages) {
             var item = document.querySelectorAll(DOMStrings.itemPercentage);
+
+
+
+
+            
         },
 =======
 >>>>>>> Stashed changes
