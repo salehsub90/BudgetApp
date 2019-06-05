@@ -211,6 +211,9 @@ var UIController = (function () {
         displayPercentages: function(percentages) {
             var item = document.querySelectorAll(DOMStrings.itemPercentage);
 
+
+
+
             
         },
 
