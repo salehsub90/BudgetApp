@@ -209,7 +209,22 @@ var UIController = (function () {
             }
         },
         displayPercentages: function(percentages) {
-            var item = document.querySelectorAll(DOMStrings.itemPercentage);
+            var fields = document.querySelectorAll(DOMStrings.itemPercentage);
+
+            var nodeListForeach = function (list, callback) {
+                for (var i = 0; i < list.length; i++) {
+                    callback(list[i], i);
+                }
+            };
+
+            nodeListForeach(fields, function(current, index) {
+                if (percentages[index] > 0) {
+                    current.textContent = percentages[index] + '%';
+                } else {
+                    current.textContent = '---';
+                }
+                
+            });
         },
 
         getDOMStrings: function () {
